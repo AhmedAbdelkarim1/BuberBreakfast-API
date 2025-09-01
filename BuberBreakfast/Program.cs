@@ -1,3 +1,4 @@
+using BuberBreakfast.Sevices.Breakfasts;
 using Scalar.AspNetCore;
 
 namespace BuberBreakfast
@@ -10,6 +11,7 @@ namespace BuberBreakfast
 			{
 				builder.Services.AddControllers();
 				builder.Services.AddOpenApi();
+				builder.Services.AddScoped<IBreakfastService, BreakfastService>();
 			}
 
 			var app = builder.Build();
