@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BuberBreakfast.Contracts.Breakfast
 {
-	public record CreateBreakfastResponse
+	public class UpsertBreakfastRequest
 	{
 		Guid Id;
 		string Name;
@@ -16,9 +16,9 @@ namespace BuberBreakfast.Contracts.Breakfast
 		List<string> Savory;
 		List<string> Sweet;
 
-		public CreateBreakfastResponse
-			(Guid id
-			,string name
+		public UpsertBreakfastRequest
+			(Guid id,
+			string name
 			, string description
 			, DateTime startDateTime
 			, DateTime endDateTime
@@ -31,8 +31,7 @@ namespace BuberBreakfast.Contracts.Breakfast
 			StartDateTime = startDateTime;
 			EndDateTime = endDateTime;
 			Savory = savory;
-			Sweet = sweet;			
+			Sweet = sweet;
 		}
-
 	}
 }
