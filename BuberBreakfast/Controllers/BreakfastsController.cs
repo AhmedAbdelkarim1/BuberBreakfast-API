@@ -21,7 +21,7 @@ namespace BuberBreakfast.Controllers
 		public IActionResult CreateBreakfast(CreateBreakfastRequest request)
 		{
 			var breakfast = new Breakfast(
-				id: new Guid(),
+				id: Guid.NewGuid(),
 				name: request.Name,
 				description: request.Description,
 				startDateTime: request.StartDateTime,
@@ -58,8 +58,7 @@ namespace BuberBreakfast.Controllers
 				StartDateTime: breakfast.StartDateTime,
 				EndDateTime: breakfast.EndDateTime,
 				Savory: breakfast.Savory,
-				Sweet: breakfast.Sweet
-				);
+				Sweet: breakfast.Sweet);
 			
 			return Ok(response);
 		}
@@ -67,13 +66,25 @@ namespace BuberBreakfast.Controllers
 		[HttpPut("{id:guid}")]
 		public IActionResult UpdateBreakfast(Guid id, UpsertBreakfastRequest request)
 		{
-			return Ok(request);
+			var breakfast = new Breakfast(
+				id: id,
+				name: request.Name,
+				description: request.Description,
+				startDateTime: request.StartDateTime,
+				endDateTime: request.EndDateTime,
+				savory: request.Savory,
+				sweet: request.Sweet);
+
+			_breakfastService.UpdateBreakfast(breakfast);
+
+			return NoContent();
 		}
 
 		[HttpDelete("{id:guid}")]
 		public IActionResult UpdateBreakfast(Guid id)
 		{
-			return Ok(id);
+			_breakfastService.DeleteBreakfast(id);
+			return NoContent();
 		}
 	}
 }
