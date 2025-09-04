@@ -22,7 +22,7 @@ namespace BuberBreakfast
 				{
 					app.MapScalarApiReference();
 				}
-
+				app.UseExceptionHandler("/error");
 				app.UseHttpsRedirection();
 				app.UseAuthorization();
 				app.MapControllers();
