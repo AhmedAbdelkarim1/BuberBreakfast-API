@@ -1,6 +1,7 @@
 ﻿using BuberBreakfast.Contracts.Breakfast;
 using BuberBreakfast.Models;
 using BuberBreakfast.Sevices.Breakfasts;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuberBreakfast.Controllers
@@ -94,6 +95,12 @@ namespace BuberBreakfast.Controllers
 							nameof(GetBreakfast),
 							new { id = breakfast.Id },
 							response);
+		}
+
+		[HttpPatch]
+		public IActionResult actionResult(JsonPatchDocument<Breakfast> patchDoc)
+		{
+			return Ok();
 		}
 	}
 }

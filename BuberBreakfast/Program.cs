@@ -9,7 +9,7 @@ namespace BuberBreakfast
 		{
 			var builder = WebApplication.CreateBuilder(args);
 			{
-				builder.Services.AddControllers();
+				builder.Services.AddControllers().AddNewtonsoftJson();
 				builder.Services.AddOpenApi();
 				builder.Services.AddScoped<IBreakfastService, BreakfastService>();
 			}
